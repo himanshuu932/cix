@@ -1,0 +1,89 @@
+.mainContainer {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .contentArea {
+    margin-left: 15%; /* Make room for the left pane */
+    margin-right: 15%; /* Make room for the right pane */
+    background-color: #f9f9f9; /* Light background for less eye strain */
+    border-left: 2px solid #ddd; /* Light border for separation */
+    border-right: 2px solid #ddd; /* Light border on the right as well */
+    padding: 20px;
+    font-size: 16px;
+    color: #333; /* Dark text for contrast */
+    overflow: auto; /* Enables scrolling */
+    resize: both; /* Allows the area to be resized */
+    min-width: 300px; /* Minimum width */
+    min-height: 200px; /* Minimum height */
+    box-sizing: border-box;
+  }
+  
+  .contentArea::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .contentArea::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 5px;
+  }
+  
+  .contentArea::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  /* Left Pane */
+  .leftPane {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 10; /* Keep left pane above main content */
+  }
+  
+  /* Right Pane */
+  .rightPane {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 10; /* Keep right pane above main content */
+  }
+  /* Disable zooming on the entire page */
+body {
+    touch-action: none;  /* Disable pinch zoom gestures */
+    overflow: hidden;  /* Disable scrolling */
+  }
+  
+  html {
+    font-size: 100%;  /* Ensure no scaling happens by default */
+  }
+  
