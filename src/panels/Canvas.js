@@ -1,65 +1,84 @@
 import React, { useState, useEffect } from 'react';
 import './styles/Canvas.css'; // Assuming CSS is in this file
 
-const Canvas = () => {
-  const [zoomLevel, setZoomLevel] = useState(1); // Default zoom level (100%)
+const Canvas = ({zoomLevel,setZoomLevel}) => {
+// Default zoom level (100%)
   const [zoomPercentage, setZoomPercentage] = useState(100); // Zoom percentage (100%)
 
   useEffect(() => {
-    // Prevent zooming with the scroll wheel or touch gestures
+    // Prevent zooming on the whole page
     const preventZoom = (e) => {
-      if (e.ctrlKey || (e.touches && e.touches.length > 1)) {
+      if (e.touches && e.touches.length > 1 || e.ctrlKey) {
         e.preventDefault(); // Prevent pinch-to-zoom or Ctrl+mouse-wheel zoom
       }
     };
 
-    // Add event listeners to prevent zooming on the entire page
-    document.addEventListener('wheel', preventZoom, { passive: false });
-    document.addEventListener('touchmove', preventZoom, { passive: false });
+    // Add global event listeners to prevent zooming on the page
+    document.body.style.overflow = 'hidden'; // Disable scrolling to prevent zooming outside Canvas
 
-    // Cleanup event listeners on component unmount
-    return () => {
-      document.removeEventListener('wheel', preventZoom);
-      document.removeEventListener('touchmove', preventZoom);
-    };
+    //document.addEventListener('wheel', preventZoom, { passive: false }); // Prevent mouse wheel zoom
+    document.addEventListener('touchmove', preventZoom, { passive: false }); // Prevent pinch zoom
+
+    const canvasElement = document.querySelector('.canvasArea');
+    if (canvasElement) {
+      const handleZoom = (e) => {
+        e.preventDefault(); // Prevent the default scroll behavior
+
+        setZoomLevel((prevZoom) => {
+          const newZoomLevel =
+            e.deltaY < 0 ? Math.min(prevZoom + 0.1, 2) : Math.max(prevZoom - 0.1, 0.5);
+          console.log("Zoom Level:", newZoomLevel); // Debug log to check the zoom level
+          setZoomPercentage(Math.round(newZoomLevel * 100));
+          return newZoomLevel;
+        });
+      };
+
+      canvasElement.addEventListener('wheel', handleZoom, { passive: false });
+
+      // Cleanup event listeners on component unmount
+      return () => {
+        document.removeEventListener('touchmove', preventZoom);
+        canvasElement.removeEventListener('wheel', handleZoom);
+      };
+    }
   }, []);
 
   // Zoom in function
   const zoomIn = () => {
-    if (zoomLevel < 2) { // Limiting zoom in to 200%
+    if (zoomLevel < 2) {
       const newZoomLevel = zoomLevel + 0.1;
       setZoomLevel(newZoomLevel);
-      setZoomPercentage(Math.round(newZoomLevel * 100)); // Update the zoom percentage
+      setZoomPercentage(Math.round(newZoomLevel * 100));
+      console.log("Zoom In:", newZoomLevel); // Debug log for zoom in
     }
   };
 
   // Zoom out function
   const zoomOut = () => {
-    if (zoomLevel > 0.5) { // Limiting zoom out to 50%
+    if (zoomLevel > 0.5) {
       const newZoomLevel = zoomLevel - 0.1;
       setZoomLevel(newZoomLevel);
-      setZoomPercentage(Math.round(newZoomLevel * 100)); // Update the zoom percentage
+      setZoomPercentage(Math.round(newZoomLevel * 100));
+      console.log("Zoom Out:", newZoomLevel); // Debug log for zoom out
     }
   };
 
   return (
     <div className="canvasContainer">
-      <div className="canvasArea" style={{ 
-        transform: `scale(${zoomLevel})`, 
-        transformOrigin: 'top left',
-        marginLeft: `calc(15% + 10px)`  // Adjust for left pane width and margin
-      }}>
+      <div
+        className="canvasArea"
+        style={{
+          transform: `scale(${zoomLevel})`, // Apply scaling
+          transformOrigin: 'top left', // Keep zooming around the top-left corner
+          marginLeft: `calc(15% + 10px)`, // Adjust for left pane width and margin
+        }}
+      >
         <div className="canvasContent">
           Main Content Area (Resizable and Scrollable)
-          {/* Content inside the canvas */}
         </div>
       </div>
 
-      <div className="zoomBar">
-        <button onClick={zoomOut} className="zoomButton">-</button>
-        <span className="zoomPercentage">{zoomPercentage}%</span>
-        <button onClick={zoomIn} className="zoomButton">+</button>
-      </div>
+     
     </div>
   );
 };
