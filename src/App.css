@@ -10,15 +10,14 @@
     margin-left: 15%; /* Make room for the left pane */
     margin-right: 15%; /* Make room for the right pane */
     background-color: #f9f9f9; /* Light background for less eye strain */
-    border-left: 2px solid #ddd; /* Light border for separation */
-    border-right: 2px solid #ddd; /* Light border on the right as well */
-    padding: 20px;
+     /* Light border on the right as well */
+    
     font-size: 16px;
     color: #333; /* Dark text for contrast */
     overflow: auto; /* Enables scrolling */
     resize: both; /* Allows the area to be resized */
     min-width: 300px; /* Minimum width */
-    min-height: 200px; /* Minimum height */
+    /* Minimum height */
     box-sizing: border-box;
   }
   
