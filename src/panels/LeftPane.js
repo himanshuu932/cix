@@ -70,7 +70,7 @@ const LeftPane = () => {
             {collapsedSections.section3 ? "+" : "-"}
           </button>
         </div>
-        {!collapsedSections.section3 && <div className="tile">Tile 3 Content</div>}
+        {!collapsedSections.section3 && <div className="tile">Ashutosh Verma</div>}
       </div>
     </div>
   );
