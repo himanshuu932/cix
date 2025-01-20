@@ -6,9 +6,3 @@ himanbshu
 
 
 
-
-
-feature x(){
-    thsi is feature x
-}
-fetaure y 
