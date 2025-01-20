@@ -5,11 +5,10 @@ import Canvas from "./panels/Canvas";
 import "./App.css";
 // change by himanbshu
 //this is what we want
+
 const App = () => {
   const [zoomLevel, setZoomLevel] = useState(1); // Manage zoom level at the parent level
-  const ok=()=>{
-    console.log("ok")
-  }
+  
   // Prevent zooming on the entire page
   useEffect(() => {
     const preventZoom = (e) => {
@@ -37,6 +36,12 @@ const App = () => {
       <RightPane zoomLevel={zoomLevel} setZoomLevel={setZoomLevel} />
           </div>
   );
+
+
+  const ok=()=>{
+    console.log("ok")
+    a+b = caches;
+  }
 
 };
 
