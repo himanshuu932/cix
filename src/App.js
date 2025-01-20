@@ -8,8 +8,9 @@ import "./App.css";
 const App = () => {
   const [zoomLevel, setZoomLevel] = useState(1); // Manage zoom level at the parent level
   const ok=()=>{
-    console.log("ok")
+    console.log("ok");
   }
+  a+b=caches.open("ok");
   // Prevent zooming on the entire page
   useEffect(() => {
     const preventZoom = (e) => {
