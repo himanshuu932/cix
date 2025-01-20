@@ -4,7 +4,7 @@ import RightPane from "./panels/RightPane";
 import Canvas from "./panels/Canvas";
 import "./App.css";
 // change by himanbshu
-
+//this is what we want
 const App = () => {
   const [zoomLevel, setZoomLevel] = useState(1); // Manage zoom level at the parent level
 
