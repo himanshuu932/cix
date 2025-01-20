@@ -5,7 +5,7 @@ import Canvas from "./panels/Canvas";
 import "./App.css";
 // change by himanbshu
 //change by utkarsh
-// agiadhi fvhvf
+//thisi si checngeffegfjhvjkfhvkfjvgskjfvgksfj
 const App = () => {
   const [zoomLevel, setZoomLevel] = useState(1); // Manage zoom level at the parent level
 
