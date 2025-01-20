@@ -5,7 +5,7 @@ import Canvas from "./panels/Canvas";
 import "./App.css";
 // change by himanbshu
 //change by utkarsh
-//thisi si checngeffegfjhvjkfhvkfjvgskjfvgksfj
+
 //this is what we want
 
 const App = () => {
