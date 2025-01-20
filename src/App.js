@@ -8,6 +8,10 @@ import "./App.css";
 
 //this is what we want
 //ok
+
+
+
+const styles = StyleSheet.create({});
 const App = () => {
   const [zoomLevel, setZoomLevel] = useState(1); // Manage zoom level at the parent level
   
