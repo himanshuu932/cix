@@ -16,7 +16,7 @@ const App = () => {
       //  e.preventDefault();
       }
     };
-//utarsh wala 
+ //utkarsh wala 
     // Allow vertical and horizontal scrolling, but prevent zoom actions
     document.addEventListener('wheel', preventZoom, { passive: false }); // Prevent mouse wheel zoom
     document.addEventListener('touchmove', preventZoom, { passive: false }); // Prevent pinch zoom
