@@ -3,6 +3,7 @@ import LeftPane from "./panels/LeftPane";
 import RightPane from "./panels/RightPane";
 import Canvas from "./panels/Canvas";
 import "./App.css";
+// change by himanbshu
 //change by utkarsh
 const App = () => {
   const [zoomLevel, setZoomLevel] = useState(1); // Manage zoom level at the parent level
@@ -34,6 +35,7 @@ const App = () => {
       <RightPane zoomLevel={zoomLevel} setZoomLevel={setZoomLevel} />
           </div>
   );
+
 };
 
 export default App;
